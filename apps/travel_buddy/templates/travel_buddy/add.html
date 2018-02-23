@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add Plan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        form{
+            margin: 20px;
+        }
+
+        input{
+            margin: 10px;
+
+        }
+
+        h2{
+            display: inline-block;
+        }
+        .home{
+            margin-left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h2>Add a Trip</h2>
+            <a class="home" href="/dashboard">home</a>
+            <a class="logout" href="/logout">Logout</a>
+        </div>
+
+        <form action="/new_trip" method="POST">
+            {% csrf_token%}
+        <label for="destination">Destination:</label>
+        <input type="text" name="destination" id="">
+        <br>
+        <label for="Description">Description:</label>
+        <input type="text" name="description" id="">
+        <br>
+        <label for="trave_start_date">Travel Date From:</label>
+        <input type="date" name="trave_start_date" id="">
+        <br>
+        <label for="trave_end_date">Travel Date To:</label>
+        <input type="date" name="trave_end_date" id="">
+        <br>
+        <input type="submit" name="" id="" value="Add">
+        
+        </form>
+
+        </div>
+            {% if messages %}
+            {% for item in messages %}
+            <div id="message">{{ item }}</div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+
+    </div>
+</body>
+</html>

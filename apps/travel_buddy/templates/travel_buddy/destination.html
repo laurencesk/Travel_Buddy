@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Destination</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    #header{
+        display: inline-block;
+        font-size: 20px;
+    }
+    #home{
+        margin-left: 800px;
+    }
+    #destination{
+        margin: 30px;
+    }
+    #join{
+        margin: 30px;
+        margin-top: 50px;
+    }
+
+</style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <a id="home" href="/dashboard">Home</a>
+            <a id="logout" href="/logout">Logout</a>
+        </div>
+        <div id="destination">
+            <h1>{{trip.destination}}</h1>
+            <h4>Planned By: {{trip.planned_by.name}}</h4>
+            <h4>Description: {{trip.description}}</h4>
+            <h4>Travel Date From: {{trip.trave_start_date}}</h4>
+            <h4>Travel Date To: {{trip.trave_end_date}}</h4>
+        </div>
+
+        <div id="join">
+        <h2>Other users'joining the trip:</h2>
+        {% for item in join %}
+        <h3>{{item.name}}</h3>
+        {%endfor%}
+        </div>
+    </div>
+</body>
+</html>

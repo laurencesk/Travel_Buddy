@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    #logout{
+        margin-left: 720px;
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 50px;
+        font-size: 20px;
+    }
+
+    #welcome{
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 50px;
+    }
+
+    #footer{
+        margin-top: 10px;
+        margin-left: 850px;
+        font-size: 20px;       
+    }
+
+
+    th{
+        background-color: grey;
+        font-size: 20px;
+    }
+
+    #toptable{
+        width: 1000px;
+        border: 1px solid black;
+    }
+
+    td{
+        text-align: center;
+    }
+
+    #bottomtable{
+        width: 1000px;
+        border: 1px solid black;
+        }
+
+    #bottom{
+        margin-top: 50px;
+    }    
+
+
+</style>
+</head>
+<body>
+    <div>
+        <div id="header">
+            <h2 id ="welcome">Hello, {{user.name}} !</h2>
+
+            <a id="logout" href="/logout">Logout</a>
+        </div>
+
+        <h2>Your Trip Schedule</h2>
+        <div id="schedule">
+            <table id ="toptable">
+                <tr>
+                  <th>Destination</th>
+                  <th>Travel Start Date</th>
+                  <th>Travel End Date</th> 
+                  <th>Plan</th>
+                </tr>
+
+                    {% for item in schedule %}
+                    <tr>
+                    <td><a href="/destination/{{item.id}}"><h3>{{item.destination}}</h3></a></td>     
+                    <td><h3>{{item.trave_start_date}}</h3></a></td>     
+                    <td><h3>{{item.trave_end_date}}</h3></a></td>     
+                    <td><h3>{{item.description}}</h3></a></td>     
+                    </tr>
+                    {%endfor%}
+
+              </table>
+
+              <h2 id="bottom">Other User's Travel Plans</h2>
+              <table id ="bottomtable">
+                <tr>
+                  <th>Name</th>
+                  <th>Destination</th>
+                  <th>Travel Start Date</th>
+                  <th>Travel End Date</th> 
+                  <th>Do You Want to Join?</th>
+                </tr>
+     
+                    {% for item in trips %}
+                    <tr>
+                    <td><h3>{{item.planned_by.name}}</h3></a></td>     
+                    <td><a href="/destination/{{item.id}}"><h3>{{item.destination}}</h3></a></td>     
+                    <td><h3>{{item.trave_start_date}}</h3></a></td>     
+                    <td><h3>{{item.trave_end_date}}</h3></a></td> 
+                    <td><a href="/join/{{item.id}}"><h3>Join</h3></a></td>         
+                    </tr>
+                    {%endfor%}
+ 
+              </table>
+
+        </div>
+
+
+
+        <div id="footer">
+            <a align="right" href="/add">Add Travel Plan</a>
+        </div>
+
+
+    </div>
+</body>
+</html>
